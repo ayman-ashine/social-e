@@ -7,4 +7,4 @@ const post_schema = new mongoose.Schema({
 
 })
 
-export default mongoose.models.post || mongoose.model('post', post_schema)
+export default mongoose.models.Post || mongoose.model('Post', post_schema)
