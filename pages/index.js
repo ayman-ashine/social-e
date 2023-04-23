@@ -10,7 +10,7 @@ export default function Home() {
 
     if(username && data) {
 
-      fetch('/api/posts', {
+      fetch('/api', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default function Home() {
 
   const get_posts = () => {
 
-    fetch('/api/posts')
+    fetch('/api')
     .then( res => res.json())
     .then( data => {
       setPosts(data)
