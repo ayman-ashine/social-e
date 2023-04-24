@@ -31,7 +31,6 @@ export default function Home() {
       .then( () => {
         
         run_stop_loader()
-        setUsername('')
         setData('')
         get_posts()
 
@@ -63,7 +62,6 @@ export default function Home() {
 
   return (
     <>
-      <div>
       <div className={styles.con_main}>
 
         <div className={styles.con}>
@@ -99,8 +97,6 @@ export default function Home() {
 
         </div>
         </div>
-
-      </div>
       
     </>
   )

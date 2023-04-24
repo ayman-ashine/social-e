@@ -1,10 +1,9 @@
 .con_main {
-  width: 500px;
-  height: 800px;
+  max-width: 500px;
+  max-height: 800px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 50%);
-  overflow: hidden;
 }
 
 .con_reveres {
@@ -125,6 +124,7 @@
 
 .user {
   padding: var(--pd);
+  border-bottom: 1px solid var(--light);
 }
 
 .user::before {
@@ -134,7 +134,7 @@
   height: 30px;
   vertical-align: middle;
   background-color: var(--primary);
-  color: var(--light);
+  color: var(--dark);
   font-size: 1.5rem;
   margin-right: var(--pd);
   border-radius: 50%;
