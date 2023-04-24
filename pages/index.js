@@ -6,6 +6,7 @@ export default function Home() {
   const [username, setUsername] = useState('')
   const [data, setData] = useState('')
   const [posts, setPosts] = useState([])
+  let FTECH = null;
 
   const run_stop_loader = () => {
 
@@ -38,7 +39,7 @@ export default function Home() {
 
     } else {
 
-      alert('Fill the inputs')
+      alert('Write Something!')
 
     }
 
@@ -56,23 +57,14 @@ export default function Home() {
 
   useEffect( () => {
 
-    setInterval( get_posts, 1000 )
+    get_posts()
+    if(!FTECH) FTECH = setInterval( get_posts, 1000 )
 
   }, [])
 
   return (
     <>
       <div className={styles.con_main}>
-
-        <div className={styles.con}>
-
-          <input className={styles.input_username} type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
-          <textarea className={styles.input_data} placeholder="description" value={data} onChange={(e) => setData(e.target.value)}></textarea>
-          <button className={styles.btn_add} onClick={add_post}>
-            Add <span className={[styles.loader, 'hide'].join(' ')}></span>
-          </button>
-
-        </div>
 
         <div className={styles.con}>
 
@@ -96,7 +88,20 @@ export default function Home() {
           </div>
 
         </div>
+
+        <div className={styles.shadow}></div>
+
+        <div className={styles.con}>
+
+          <input className={styles.input_username} type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <textarea className={styles.input_data} placeholder="description" value={data} onChange={(e) => setData(e.target.value)}></textarea>
+          <button className={styles.btn_add} onClick={add_post}>
+          <img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/filled-sent.png"/><span className={[styles.loader, 'hide'].join(' ')}></span>
+          </button>
+
         </div>
+
+      </div>
       
     </>
   )
