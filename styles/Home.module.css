@@ -1,0 +1,148 @@
+.con_main {
+  width: 500px;
+  height: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 50%);
+  overflow: hidden;
+}
+
+.con_reveres {
+  display: flex;
+  flex-direction: column-reverse;
+  grid-column: span 8;
+  width: 100%;
+}
+
+.con {
+  display: grid;
+  border: 1px solid var(--light);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, auto);
+  padding: calc( 2 * var(--pd) );
+  gap: var(--pd);
+  width: 100%;
+  overflow: auto;
+}
+
+.con input {
+  background-color: transparent;
+  border: 1px solid var(--light);
+  outline: none;
+  padding: var(--pd);
+  width: 100%;
+  grid-column: span 4;
+  border-radius: var(--br);
+}
+
+.con input::placeholder {
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.con input:hover {
+  border: 1px solid var(--primary);
+}
+
+.con textarea {
+  background-color: transparent;
+  border: 1px solid var(--light);
+  border-radius: var(--br);
+  outline: none;
+  resize: none;
+  padding: var(--pd);
+  width: 100%;
+  grid-column: span 4;
+  grid-row: span 6;
+}
+
+.con textarea::placeholder {
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.con textarea:hover {
+  border: 1px solid var(--primary);
+}
+
+.con button {
+  background-color: transparent;
+  border: 1px solid var(--light);
+  border-radius: var(--br);
+  grid-column: span 4;
+  padding: var(--pd);
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.con button:hover {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+.con .loader {
+  background-color: var(--dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.con .loader::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: top left;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  animation: loader-kf 0.5s linear infinite;
+}
+
+@keyframes loader-kf {
+  0% {
+    transform: rotate(0deg) translateY(-50%) translateX(-50%);
+  }
+  100% {
+    transform: rotate(360deg) translateY(-50%) translateX(-50%);
+  }
+}
+
+.post {
+  background-color: var(--dark);
+  border: 1px solid var(--light);
+  border-radius: var(--br);
+  grid-column: span 4;
+  width: 100%;
+  margin: var(--pd) 0;
+}
+
+.user {
+  padding: var(--pd);
+}
+
+.user::before {
+  content: "?";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-color: var(--primary);
+  color: var(--light);
+  font-size: 1.5rem;
+  margin-right: var(--pd);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.data {
+  padding: var(--pd);
+}

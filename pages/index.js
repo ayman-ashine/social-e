@@ -1,3 +1,4 @@
+import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from "react"
 
 export default function Home() {
@@ -6,9 +7,19 @@ export default function Home() {
   const [data, setData] = useState('')
   const [posts, setPosts] = useState([])
 
+  const run_stop_loader = () => {
+
+    const loader = document.querySelector(`.${styles.loader}`)
+
+    loader.classList.toggle('hide')
+
+  }
+
   const add_post = () => {
 
     if(username && data) {
+
+      run_stop_loader()
 
       fetch('/api', {
         method: 'POST',
@@ -18,7 +29,12 @@ export default function Home() {
         body: JSON.stringify({user: username, data: data })
       })
       .then( () => {
+        
+        run_stop_loader()
+        setUsername('')
+        setData('')
         get_posts()
+
       })
 
     } else {
@@ -41,40 +57,47 @@ export default function Home() {
 
   useEffect( () => {
 
-    get_posts()
+    setInterval( get_posts, 1000 )
 
   }, [])
 
   return (
     <>
-      
-      <div className="con_main">
+      <div>
+      <div className={styles.con_main}>
 
-        <div className="con_add_post">
+        <div className={styles.con}>
 
-          <input className="input-username" type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
-          <input className="input-data" type="text" placeholder="data" onChange={(e) => setData(e.target.value)}/>
-          <button className="btn-add" onClick={add_post}>Add</button>
+          <input className={styles.input_username} type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <textarea className={styles.input_data} placeholder="description" value={data} onChange={(e) => setData(e.target.value)}></textarea>
+          <button className={styles.btn_add} onClick={add_post}>
+            Add <span className={[styles.loader, 'hide'].join(' ')}></span>
+          </button>
 
         </div>
 
-        <div className="con_posts">
-          
-          {
-            posts.map( (post, index) => {
+        <div className={styles.con}>
 
-              return (
-                <div className="post" key={index}>
+          <div className={styles.con_reveres}>
+            {
+              posts.map( (post, index) => {
 
-                  <u>{post.user}</u>
-                  <p>{post.data}</p>
+                return (
 
-                </div>
-              )
+                  <div className={styles.post} key={index}>
 
-            })
-          }
+                    <p className={styles.user}>{post.user}</p>
+                    <p className={styles.data}>{post.data}</p>
 
+                  </div>
+                  
+                )
+
+              })
+            }
+          </div>
+
+        </div>
         </div>
 
       </div>

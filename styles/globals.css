@@ -1,74 +1,38 @@
+:root {
+  --dark: #1b2027;
+  --light: #4e6d97;
+  --primary: #4698fc;
+  --pd: 0.5rem;
+  --br: 0.5rem;
+}
+
 * {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  color: #a6a6ac;
-  font-size: 20px;
+  font-size: 17px;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 body {
-  background-color: #30303b;
-  display: flex;
+  background-color: var(--dark);
+  display: grid;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
 }
 
-.con_main {
-  background-color: #7171e7;
-  padding: 0.2rem;
-  width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
+.hide {
+  display: none;
 }
 
-.con_add_post {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.2rem;
+::-webkit-scrollbar {
+  width: 15px;
 }
 
-.con_add_post input {
-  background-color: #19191d;
-  outline: none;
-  border: none;
-  padding: 0.2rem;
-  width: 100%;
-}
-
-.con_add_post .input-username {
-  grid-column: span 8;
-  grid-row: 1;
-}
-
-
-.con_add_post .input-data {
-  grid-column: span 8;
-  grid-row: 2;
-}
-
-
-.con_add_post button {
-  background-color: #19191d;
-  border: none;
-  grid-column: span 2;
-  grid-row: span 2;
-  padding: 0.2rem;
-  width: 100%;
-}
-
-.con_posts {
-  width: 100%;
-  height: 100%;
-  padding: 1rem 0;
-}
-
-.post {
-  background-color: #19191d;
-  padding: 0.2rem;
-  margin: 0.2rem 0;
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 5px solid var(--dark);
 }
